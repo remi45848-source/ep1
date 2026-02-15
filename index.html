@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>The Fall of the Powerful — Episode One</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+    <title>权贵的陨落 - 第一集</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html, body { width: 100%; height: 100%; overflow: hidden; -webkit-font-smoothing: antialiased; }
-        body { font-family: 'Cormorant Garamond', 'Georgia', serif; background: #0a0a0a; color: #e8e8e8; font-weight: 300; }
+        body { font-family: 'Noto Serif SC', 'Georgia', serif; background: #0a0a0a; color: #e8e8e8; font-weight: 300; }
         
         #startOverlay { 
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
@@ -18,8 +18,8 @@
         }
         #startOverlay.hidden { opacity: 0; pointer-events: none; }
         #startButton { 
-            padding: 20px 50px; font-size: 1.3em; font-family: 'Cormorant Garamond', serif; font-weight: 300; 
-            letter-spacing: 3px; background: rgba(255, 255, 255, 0.05); 
+            padding: 20px 50px; font-size: 1.3em; font-family: 'Noto Serif SC', serif; font-weight: 300; 
+            letter-spacing: 2px; background: rgba(255, 255, 255, 0.05); 
             border: 1px solid rgba(255, 255, 255, 0.3); color: #fff; cursor: pointer; 
             border-radius: 2px; transition: all 0.4s ease; 
         }
@@ -52,7 +52,7 @@
         
         .bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
         .text-content { 
-            font-size: 1.35em; line-height: 2.4; letter-spacing: 0.04em; 
+            font-size: 1.15em; line-height: 2.8; letter-spacing: 0.1em; 
             text-align: center; max-width: 85%; padding: 40px; 
         }
         .text-content .emphasis { font-weight: 500; color: #fff; }
@@ -120,54 +120,54 @@
         const R2 = 'https://pub-5e8a0ef5a4644a828651643ce245e258.r2.dev';
 
         const states = [
-            // 0  ── Opening · Execution
+            // 0  ── 开场 · 处决场景
             { type: 'video', tone: 'tone-execution',     src: `${R2}/raw-6.mp4` },
             // 1
-            { type: 'text',  tone: 'tone-silence',       text: `<p>There were no screams.</p><p class="emphasis">Only the bewildered gaze of those who could not yet comprehend their own dying.</p>` },
+            { type: 'text',  tone: 'tone-silence',       text: `<p>没有尖叫。</p><p class="emphasis">只有困惑的眼神。</p>` },
             // 2
-            { type: 'text',  tone: 'tone-memory-warm',   text: `<p class="emphasis">Three hours earlier.</p><p>Candlelight trembled against crystal. Champagne exhaled its gilded breath in quiet bubbles.</p>` },
-            // 3  ── Celebration / Champagne gala
+            { type: 'text',  tone: 'tone-memory-warm',   text: `<p class="emphasis">三个小时前。</p><p>烛光摇曳，香槟泛起气泡。</p>` },
+            // 3  ── 庆典/香槟派对
             { type: 'video', tone: 'tone-celebration',    src: `${R2}/lv_0_20260107152558.mp4` },
             // 4
-            { type: 'text',  tone: 'tone-revelation',    text: `<p>And this prosperity — upon what foundation did it rest?</p>` },
+            { type: 'text',  tone: 'tone-revelation',    text: `<p>而这繁荣，建立在什么基础之上？</p>` },
             // 5
-            { type: 'text',  tone: 'tone-power-before',  text: `<p class="emphasis">The Dalton dynasty. A political aristocracy.</p><p>The grandfather, a veteran senator who shaped legislation for decades. The mother, who ascended to the vice presidency itself.</p><p>There was no door in this nation that would not open at their name.</p>` },
+            { type: 'text',  tone: 'tone-power-before',  text: `<p class="emphasis">达尔顿家族。政治门阀。</p><p>祖父是资深议员，母亲官至副总统。</p><p>没有一扇门是他们打不开的。</p>` },
             // 6
             { type: 'image', tone: 'tone-archive',       imageUrl: 'https://i.ibb.co/8Dw33QxK/nanobana-generated-image-jpg.png' },
             // 7
-            { type: 'text',  tone: 'tone-power-before',  text: `<p>Through every scandal, every tempest, they survived — shielded by the vast, invisible web of those who owed them favors.</p>` },
+            { type: 'text',  tone: 'tone-power-before',  text: `<p>每一次风波，他们都凭借人脉侥幸幸存。</p>` },
             // 8
-            { type: 'text',  tone: 'tone-power-before',  text: `<p>Billions in flood-relief funds, vanished without a trace.</p><p>The blood of countless lives, crushed beneath the weight of their impunity.</p><p class="emphasis">And still, they walked free.</p>` },
+            { type: 'text',  tone: 'tone-power-before',  text: `<p>百亿防洪基金下落不明。</p><p>压死千百条人命的罪责。</p><p class="emphasis">他们都得以逃脱。</p>` },
             // 9
-            { type: 'text',  tone: 'tone-power-before',  text: `<p>But today — would that fortune hold?</p>` },
-            // 10 ── Gunfire
+            { type: 'text',  tone: 'tone-power-before',  text: `<p>而今天，这份幸运还能延续吗？</p>` },
+            // 10 ── 枪击场景
             { type: 'video', tone: 'tone-gunfire',       src: `${R2}/lv_0_20260109225800.mp4` },
             // 11
-            { type: 'text',  tone: 'tone-execution',     text: `<p>Thirty minutes. Forty-seven lives.</p>` },
-            // 12 ── Crime scene
+            { type: 'text',  tone: 'tone-execution',     text: `<p>三十分钟。47条人命。</p>` },
+            // 12 ── 犯罪现场
             { type: 'video', tone: 'tone-crime-scene',   src: `${R2}/raw-3.mp4` },
             // 13
-            { type: 'text',  tone: 'tone-aftermath',     text: `<p>The air hung thick with the scent of iron and gunpowder.</p>` },
+            { type: 'text',  tone: 'tone-aftermath',     text: `<p>空气中弥漫着金属与硝烟的味道。</p>` },
             // 14
-            { type: 'text',  tone: 'tone-aftermath',     text: `<p class="emphasis">The entire world held its breath.</p>` },
+            { type: 'text',  tone: 'tone-aftermath',     text: `<p class="emphasis">整个世界都在屏息。</p>` },
             // 15
-            { type: 'text',  tone: 'tone-revelation',    text: `<p>Now, nothing would ever be the same.</p>` },
+            { type: 'text',  tone: 'tone-revelation',    text: `<p>现在，什么都不一样了。</p>` },
             // 16
-            { type: 'text',  tone: 'tone-aftermath',     text: `<p class="emphasis">One hour later.</p>` },
-            // 17 ── Investigation begins
+            { type: 'text',  tone: 'tone-aftermath',     text: `<p class="emphasis">一小时后。</p>` },
+            // 17 ── 调查开始
             { type: 'video', tone: 'tone-investigation', src: `${R2}/lv_0_20260107152639.mp4` },
             // 18
-            { type: 'text',  tone: 'tone-investigation', text: `<p>The machinery of the state lurched into motion. Every force, every authority, bent toward a single question: who did this?</p>` },
+            { type: 'text',  tone: 'tone-investigation', text: `<p>系统开始运转。所有的力量都在试图回答：谁做的？</p>` },
             // 19
-            { type: 'text',  tone: 'tone-dawn',          text: `<p>No surveillance. No witnesses. No motive.</p>` },
-            // 20 ── Investigation deepens / Rainy night
+            { type: 'text',  tone: 'tone-dawn',          text: `<p>没有监控。没有目击者。没有动机。</p>` },
+            // 20 ── 调查深入/雨夜
             { type: 'video', tone: 'tone-investigation', src: `${R2}/raw-10.mp4` },
             // 21
-            { type: 'text',  tone: 'tone-investigation', text: `<p class="emphasis">The rain did not stop.</p>` },
+            { type: 'text',  tone: 'tone-investigation', text: `<p class="emphasis">雨没有停。</p>` },
             // 22
-            { type: 'text',  tone: 'execution',          text: `<p>Human life, cheap as weeds trampled underfoot.</p>` },
+            { type: 'text',  tone: 'execution',          text: `<p>人命如草芥。</p>` },
             // 23
-            { type: 'text',  tone: 'execution',          text: `<p class="emphasis">And this — was only the beginning.</p>` }
+            { type: 'text',  tone: 'execution',          text: `<p class="emphasis">而这，只是开始。</p>` }
         ];
 
         let currentIndex = -1;
@@ -193,6 +193,10 @@
                             <div class="video-loader" id="loader_${index}"></div>
                             <video id="vid_${index}"
                                 playsinline
+                                webkit-playsinline
+                                x5-playsinline
+                                x5-video-player-type="h5"
+                                x5-video-player-fullscreen="true"
                                 muted
                                 preload="none"
                             ></video>
@@ -213,6 +217,7 @@
         }
 
         function preloadAround(index) {
+            // 预加载当前 + 前后各1个视频state（不是index，是下一个video类型的state）
             const range = [index - 1, index, index + 1, index + 2];
             range.forEach(i => {
                 if (i < 0 || i >= states.length) return;
@@ -227,11 +232,35 @@
         }
 
         async function startExperience() {
+            // 1. 尝试播放环境音
             try { 
                 await ambientAudio.play(); 
                 ambientAudio.volume = 0.3; 
-            } catch(e) {}
+            } catch(e) {
+                // 移动端可能阻止，不影响继续
+                console.log('Ambient audio blocked, continuing...');
+            }
 
+            // 2. 移动端关键：利用用户点击的交互权限，预激活所有 video 元素
+            //    在用户手势回调内 play+pause 一次，浏览器就会记住这个 video 被"允许"了
+            const activatePromises = Object.entries(videoElements).map(async ([idx, vid]) => {
+                try {
+                    vid.muted = true;
+                    vid.src = states[idx].src;
+                    await vid.play();
+                    vid.pause();
+                    vid.currentTime = 0;
+                } catch(e) {
+                    // 某些视频可能还没加载，没关系
+                }
+            });
+            // 不等全部完成，最多等2秒
+            await Promise.race([
+                Promise.allSettled(activatePromises),
+                new Promise(r => setTimeout(r, 2000))
+            ]);
+
+            // 3. 隐藏遮罩，进入故事
             document.getElementById('startOverlay').classList.add('hidden');
             preloadAround(0);
             setTimeout(() => gotoState(0), 600);
@@ -255,7 +284,7 @@
             const activeEl = document.querySelector(`[data-index="${index}"]`);
             activeEl.classList.add('active');
 
-            // State 20: 1.2s fade-in
+            // State 20: 1.2s 渐明效果
             if (index === 20) {
                 activeEl.classList.add('fade-in-slow');
             }
@@ -263,6 +292,7 @@
             preloadAround(index);
 
             if (nextState.type === 'video') {
+                // 只在 state 3 时静音环境音，其他视频state保持环境音
                 if (index === 3) {
                     fadeAmbient(0);
                 } else {
@@ -272,6 +302,7 @@
                 const loader = document.getElementById(`loader_${index}`);
                 const stateEl = document.querySelector(`[data-index="${index}"]`);
 
+                // 清除之前的 ended 监听
                 vid.onended = null;
 
                 if (!vid.src) {
@@ -279,44 +310,50 @@
                     vid.load();
                 }
 
-                if (vid.readyState >= 3) {
-                    vid.currentTime = 0;
-                    vid.muted = true;
-                    try {
-                        await vid.play();
-                        vid.muted = false;
-                    } catch(e) {
-                        try { await vid.play(); } catch(e2) {}
-                    }
-                    if (loader) loader.classList.add('hidden');
-                } else {
-                    if (loader) loader.classList.remove('hidden');
-                    await new Promise((resolve) => {
-                        const onReady = () => {
-                            vid.removeEventListener('canplay', onReady);
-                            resolve();
-                        };
-                        const timeout = setTimeout(() => {
-                            vid.removeEventListener('canplay', onReady);
-                            resolve();
-                        }, 5000);
-                        vid.addEventListener('canplay', () => {
-                            clearTimeout(timeout);
-                            onReady();
-                        });
-                    });
-                    vid.currentTime = 0;
-                    vid.muted = true;
-                    try {
-                        await vid.play();
-                        vid.muted = false;
-                    } catch(e) {
-                        try { await vid.play(); } catch(e2) {}
-                    }
-                    if (loader) loader.classList.add('hidden');
-                }
+                // 显示 loader
+                if (loader) loader.classList.remove('hidden');
 
-                // State 20: start fade 2s before video ends, fully black on finish
+                // 尝试直接播放（移动端预激活过的 video 通常可以直接 play）
+                vid.currentTime = 0;
+                vid.muted = true;
+
+                const tryPlay = async () => {
+                    try {
+                        await vid.play();
+                        vid.muted = false;
+                    } catch(e) {
+                        // 如果直接 play 失败，等 canplay 后再试
+                        await new Promise((resolve) => {
+                            const onReady = () => {
+                                vid.removeEventListener('canplay', onReady);
+                                resolve();
+                            };
+                            const timeout = setTimeout(() => {
+                                vid.removeEventListener('canplay', onReady);
+                                resolve();
+                            }, 8000);
+                            vid.addEventListener('canplay', () => {
+                                clearTimeout(timeout);
+                                onReady();
+                            });
+                        });
+                        vid.currentTime = 0;
+                        vid.muted = true;
+                        try {
+                            await vid.play();
+                            vid.muted = false;
+                        } catch(e2) {
+                            // 最终兜底：静音播放
+                            try { await vid.play(); } catch(e3) {}
+                        }
+                    }
+                };
+                await tryPlay();
+                if (loader) loader.classList.add('hidden');
+
+                // 视频播完后：渐暗 → 自动跳转下一个 state
+                // 视频播完后：渐暗 → 自动跳转下一个 state
+                // State 20: 提前2秒开始渐暗，播完时刚好全黑
                 if (index === 20) {
                     const startFadeBeforeEnd = () => {
                         const checkTime = setInterval(() => {
@@ -372,6 +409,7 @@
             }, 50);
         }
 
+        // ── 滚轮（带冷却）──
         let scrollCooldown = false;
         window.addEventListener('wheel', e => {
             if (scrollCooldown) return;
@@ -381,6 +419,7 @@
             setTimeout(() => { scrollCooldown = false; }, 1200);
         }, { passive: true });
 
+        // ── 触摸 ──
         let touchStartY = 0;
         window.addEventListener('touchstart', e => {
             touchStartY = e.touches[0].clientY;
@@ -393,6 +432,7 @@
             }
         }, { passive: true });
 
+        // ── 键盘 ──
         window.addEventListener('keydown', e => {
             if (e.key === 'ArrowDown' || e.key === ' ') gotoState(currentIndex + 1);
             if (e.key === 'ArrowUp') gotoState(currentIndex - 1);
