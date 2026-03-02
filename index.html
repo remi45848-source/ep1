@@ -9,21 +9,22 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html, body { width: 100%; height: 100%; overflow: hidden; -webkit-font-smoothing: antialiased; }
         body { font-family: 'Cormorant Garamond', 'Georgia', serif; background: #0a0a0a; color: #e8e8e8; font-weight: 300; }
-       
-        #startOverlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.98);
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            z-index: 10000; opacity: 1; transition: opacity 0.8s ease;
+        
+        #startOverlay { 
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            background: rgba(0, 0, 0, 0.98); 
+            display: flex; flex-direction: column; align-items: center; justify-content: center; 
+            z-index: 10000; opacity: 1; transition: opacity 0.8s ease; 
         }
         #startOverlay.hidden { opacity: 0; pointer-events: none; }
-        #startButton {
-            padding: 20px 50px; font-size: 1.3em; font-family: 'Cormorant Garamond', serif; font-weight: 300;
-            letter-spacing: 3px; background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.3); color: #fff; cursor: pointer;
-            border-radius: 2px; transition: all 0.4s ease;
+        #startButton { 
+            padding: 20px 50px; font-size: 1.3em; font-family: 'Cormorant Garamond', serif; font-weight: 300; 
+            letter-spacing: 3px; background: rgba(255, 255, 255, 0.05); 
+            border: 1px solid rgba(255, 255, 255, 0.3); color: #fff; cursor: pointer; 
+            border-radius: 2px; transition: all 0.4s ease; 
         }
         #startButton:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.5); }
+
         .video-loader {
             position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
             width: 24px; height: 24px; border: 2px solid rgba(255,255,255,0.1);
@@ -33,29 +34,37 @@
         }
         .video-loader.hidden { opacity: 0; }
         @keyframes spin { to { transform: translate(-50%, -50%) rotate(360deg); } }
+
         .viewport { position: fixed; top: 0; left: 0; width: 100%; height: 100%; }
-        .state {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            opacity: 0; visibility: hidden;
-            transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-            display: flex; align-items: center; justify-content: center;
+        .state { 
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+            opacity: 0; visibility: hidden; 
+            transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1); 
+            display: flex; align-items: center; justify-content: center; 
         }
         .state.active { opacity: 1; visibility: visible; pointer-events: auto; }
         .state.fade-out { opacity: 0; transition: opacity 1.1s ease-out; }
-       
+        .state.fade-in-slow { animation: fadeInSlow 1.2s ease-in forwards; }
+        @keyframes fadeInSlow {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
         .bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
-        .text-content {
-            font-size: 1.35em; line-height: 2.4; letter-spacing: 0.04em;
-            text-align: center; max-width: 85%; padding: 40px;
+        .text-content { 
+            font-size: 1.35em; line-height: 2.4; letter-spacing: 0.04em; 
+            text-align: center; max-width: 85%; padding: 40px; 
         }
         .text-content .emphasis { font-weight: 500; color: #fff; }
-        .video-container {
-            width: 100%; height: 100%; background: #000; overflow: hidden; position: relative;
+
+        .video-container { 
+            width: 100%; height: 100%; background: #000; overflow: hidden; position: relative; 
         }
         .video-container video {
             width: 100%; height: 100%;
             object-fit: contain;
         }
+
         .image-frame { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; overflow: hidden; }
         .image-frame img { max-width: 80%; max-height: 75%; object-fit: contain; box-shadow: 0 30px 90px rgba(0,0,0,0.8); transform: scale(1); transform-origin: center center; }
         .state.active .image-frame img { animation: slowZoom 4s ease-out forwards; }
@@ -63,6 +72,7 @@
             from { transform: scale(1); }
             to { transform: scale(2); }
         }
+
         .tone-execution { background: #08080c; }
         .tone-gunfire { background: #160808; }
         .tone-silence { background: #0a0a0f; }
@@ -75,13 +85,14 @@
         .tone-crime-scene { background: #0d0808; }
         .tone-investigation { background: #080d12; }
         .tone-dawn { background: #12121c; }
-        .nav-hint {
-            position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
-            font-size: 11px; letter-spacing: 2px; color: rgba(255, 255, 255, 0.2); z-index: 1000;
+
+        .nav-hint { 
+            position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); 
+            font-size: 11px; letter-spacing: 2px; color: rgba(255, 255, 255, 0.2); z-index: 1000; 
         }
-        .state-indicator {
-            position: fixed; top: 30px; right: 30px; font-size: 10px;
-            color: rgba(255, 255, 255, 0.2); z-index: 1000;
+        .state-indicator { 
+            position: fixed; top: 30px; right: 30px; font-size: 10px; 
+            color: rgba(255, 255, 255, 0.2); z-index: 1000; 
         }
         .nav-hint .arrow {
             display: inline-block; animation: bounce 2s ease infinite;
@@ -90,370 +101,247 @@
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(4px); }
         }
-
-        /* New styles for interactive State 6 */
-        .interactive-scene { width: 100%; height: 100%; position: relative; overflow: hidden; }
-        .drawer { 
-            position: absolute; bottom: -60%; left: 0; width: 100%; height: 80%; 
-            background: url('https://via.placeholder.com/1920x1080/333/555?text=Archive+Cabinet') center/cover; 
-            transition: bottom 0.8s ease-out; 
-            display: flex; align-items: center; justify-content: center;
-        }
-        .drawer.open { bottom: 0; }
-        .folder {
-            width: 40%; height: 60%; background: url('https://via.placeholder.com/800x600/aaa/888?text=Folder+Cover') center/contain no-repeat;
-            cursor: pointer; transition: transform 0.5s ease;
-        }
-        .folder.opened { transform: scale(1.5) translateY(-20%); }
-        .pages-container {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: none; flex-direction: row; overflow: hidden;
-        }
-        .page {
-            min-width: 100%; height: 100%; background-size: contain; background-position: center; background-repeat: no-repeat;
-            transition: transform 0.5s ease;
-        }
-        .drag-hint { position: absolute; bottom: 10%; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.5); font-size: 1em; }
     </style>
 </head>
 <body>
     <audio id="globalAmbient" loop preload="auto">
         <source src="https://files.catbox.moe/jn29tb.mp3" type="audio/mpeg">
     </audio>
-    <!-- New audio elements for sound effects -->
-    <audio id="sfx-drawer" preload="auto">
-        <source src="https://freesound.org/data/previews/123/123456_789012-lq.mp3" type="audio/mpeg"> <!-- Placeholder URL, replace with real -->
-    </audio>
-    <audio id="sfx-slap" preload="auto">
-        <source src="https://freesound.org/data/previews/234/234567_890123-lq.mp3" type="audio/mpeg"> <!-- Placeholder -->
-    </audio>
-    <audio id="sfx-page" preload="auto">
-        <source src="https://freesound.org/data/previews/345/345678_901234-lq.mp3" type="audio/mpeg"> <!-- Placeholder -->
-    </audio>
 
     <div id="startOverlay">
         <button id="startButton">ENTER STORY</button>
     </div>
+
     <div class="viewport" id="viewport"></div>
     <div class="state-indicator" id="stateIndicator">00 / 23</div>
     <div class="nav-hint"><span class="arrow">↓</span> SCROLL</div>
-    <script>
-        const R2 = 'https://pub-5e8a0ef5a4644a828651643ce245e258.r2.dev';
-        const states = [
-            // 0 ── Opening · Execution
-            { type: 'video', tone: 'tone-execution', src: `${R2}/raw-6.mp4` },
-            // 1
-            { type: 'text', tone: 'tone-silence', text: `<p>There were no screams.</p><p class="emphasis">Only the bewildered gaze of those who could not yet comprehend their own dying.</p>` },
-            // 2
-            { type: 'text', tone: 'tone-memory-warm', text: `<p class="emphasis">Three hours earlier.</p><p>Candlelight trembled against crystal. Champagne exhaled its gilded breath in quiet bubbles.</p>` },
-            // 3 ── Celebration / Champagne gala
-            { type: 'video', tone: 'tone-celebration', src: `${R2}/lv_0_20260107152558.mp4` },
-            // 4
-            { type: 'text', tone: 'tone-revelation', text: `<p>And this prosperity — upon what foundation did it rest?</p>` },
-            // 5
-            { type: 'text', tone: 'tone-power-before', text: `<p class="emphasis">The Dalton dynasty. A political aristocracy.</p><p>The grandfather, a veteran senator who shaped legislation for decades. The mother, who ascended to the vice presidency itself.</p><p>There was no door in this nation that would not open at their name.</p>` },
-            // 6 ── Interactive Archive Scene (replaced from static image)
-            { type: 'interactive', tone: 'tone-archive' },
-            // 7
-            { type: 'text', tone: 'tone-power-before', text: `<p>Through every scandal, every tempest, they survived — shielded by the vast, invisible web of those who owed them favors.</p>` },
-            // 8
-            { type: 'text', tone: 'tone-power-before', text: `<p>Billions in flood-relief funds, vanished without a trace.</p><p>The blood of countless lives, crushed beneath the weight of their impunity.</p><p class="emphasis">And still, they walked free.</p>` },
-            // 9
-            { type: 'text', tone: 'tone-power-before', text: `<p>But today — would that fortune hold?</p>` },
-            // 10 ── Gunfire
-            { type: 'video', tone: 'tone-gunfire', src: `${R2}/lv_0_20260109225800.mp4` },
-            // 11
-            { type: 'text', tone: 'tone-execution', text: `<p>Thirty minutes. Forty-seven lives.</p>` },
-            // 12 ── Crime scene
-            { type: 'video', tone: 'tone-crime-scene', src: `${R2}/raw-3.mp4` },
-            // 13
-            { type: 'text', tone: 'tone-aftermath', text: `<p>The air hung thick with the scent of iron and gunpowder.</p>` },
-            // 14
-            { type: 'text', tone: 'tone-aftermath', text: `<p class="emphasis">The entire world held its breath.</p>` },
-            // 15
-            { type: 'text', tone: 'tone-revelation', text: `<p>Now, nothing would ever be the same.</p>` },
-            // 16
-            { type: 'text', tone: 'tone-aftermath', text: `<p class="emphasis">One hour later.</p>` },
-            // 17 ── Investigation begins
-            { type: 'video', tone: 'tone-investigation', src: `${R2}/lv_0_20260107152639.mp4` },
-            // 18
-            { type: 'text', tone: 'tone-investigation', text: `<p>The machinery of the state lurched into motion. Every force, every authority, bent toward a single question: who did this?</p>` },
-            // 19
-            { type: 'text', tone: 'tone-dawn', text: `<p>No surveillance. No witnesses. No motive.</p>` },
-            // 20
-            { type: 'text', tone: 'tone-investigation', text: `<p class="emphasis">The rain did not stop.</p>` },
-            // 21 ── Investigation deepens / Rainy night
-            { type: 'video', tone: 'tone-investigation', src: `${R2}/raw-10.mp4` },
-            // 22
-            { type: 'text', tone: 'execution', text: `<p>Human life, cheap as weeds trampled underfoot.</p>` },
-            // 23
-            { type: 'text', tone: 'execution', text: `<p class="emphasis">And this — was only the beginning.</p>` }
-        ];
-        let currentIndex = -1;
-        let isTransitioning = false;
-        const videoElements = {};
-        const ambientAudio = document.getElementById('globalAmbient');
-        const sfxDrawer = document.getElementById('sfx-drawer');
-        const sfxSlap = document.getElementById('sfx-slap');
-        const sfxPage = document.getElementById('sfx-page');
 
-        // Interactive State 6 specific vars
-        let drawerOpen = false;
-        let folderOpened = false;
-        let currentPage = 0;
-        const pages = [
-            'https://via.placeholder.com/1920x1080/444/666?text=Page+1:+Family+Photo', // Placeholder page 1
-            'https://via.placeholder.com/1920x1080/555/777?text=Page+2:+News+Clipping', // Page 2
-            'https://via.placeholder.com/1920x1080/666/888?text=Page+3:+Financial+Report', // Page 3
-            'https://i.ibb.co/8Dw33QxK/nanobana-generated-image-jpg.png' // Last page: original CLOSED image
+    <script>
+        var R2 = 'https://pub-5e8a0ef5a4644a828651643ce245e258.r2.dev';
+        var states = [
+            { type: 'video', tone: 'tone-execution',     src: R2 + '/raw-6.mp4' },
+            { type: 'text',  tone: 'tone-silence',       text: '<p>There were no screams.</p><p class="emphasis">Only the bewildered gaze of those who could not yet comprehend their own dying.</p>' },
+            { type: 'text',  tone: 'tone-memory-warm',   text: '<p class="emphasis">Three hours earlier.</p><p>Candlelight trembled against crystal. Champagne exhaled its gilded breath in quiet bubbles.</p>' },
+            { type: 'video', tone: 'tone-celebration',    src: R2 + '/lv_0_20260107152558.mp4' },
+            { type: 'text',  tone: 'tone-revelation',    text: '<p>And this prosperity \u2014 upon what foundation did it rest?</p>' },
+            { type: 'text',  tone: 'tone-power-before',  text: '<p class="emphasis">The Dalton dynasty. A political aristocracy.</p><p>The grandfather, a veteran senator who shaped legislation for decades. The mother, who ascended to the vice presidency itself.</p><p>There was no door in this nation that would not open at their name.</p>' },
+            { type: 'image', tone: 'tone-archive',       imageUrl: 'https://i.ibb.co/8Dw33QxK/nanobana-generated-image-jpg.png' },
+            { type: 'text',  tone: 'tone-power-before',  text: '<p>Through every scandal, every tempest, they survived \u2014 shielded by the vast, invisible web of those who owed them favors.</p>' },
+            { type: 'text',  tone: 'tone-power-before',  text: '<p>Billions in flood-relief funds, vanished without a trace.</p><p>The blood of countless lives, crushed beneath the weight of their impunity.</p><p class="emphasis">And still, they walked free.</p>' },
+            { type: 'text',  tone: 'tone-power-before',  text: '<p>But today \u2014 would that fortune hold?</p>' },
+            { type: 'video', tone: 'tone-gunfire',       src: R2 + '/lv_0_20260109225800.mp4' },
+            { type: 'text',  tone: 'tone-execution',     text: '<p>Thirty minutes. Forty-seven lives.</p>' },
+            { type: 'video', tone: 'tone-crime-scene',   src: R2 + '/raw-3.mp4' },
+            { type: 'text',  tone: 'tone-aftermath',     text: '<p>The air hung thick with the scent of iron and gunpowder.</p>' },
+            { type: 'text',  tone: 'tone-aftermath',     text: '<p class="emphasis">The entire world held its breath.</p>' },
+            { type: 'text',  tone: 'tone-revelation',    text: '<p>Now, nothing would ever be the same.</p>' },
+            { type: 'text',  tone: 'tone-aftermath',     text: '<p class="emphasis">One hour later.</p>' },
+            { type: 'video', tone: 'tone-investigation', src: R2 + '/lv_0_20260107152639.mp4' },
+            { type: 'text',  tone: 'tone-investigation', text: '<p>The machinery of the state lurched into motion. Every force, every authority, bent toward a single question: who did this?</p>' },
+            { type: 'text',  tone: 'tone-dawn',          text: '<p>No surveillance. No witnesses. No motive.</p>' },
+            { type: 'video', tone: 'tone-investigation', src: R2 + '/raw-10.mp4' },
+            { type: 'text',  tone: 'tone-investigation', text: '<p class="emphasis">The rain did not stop.</p>' },
+            { type: 'text',  tone: 'execution',          text: '<p>Human life, cheap as weeds trampled underfoot.</p>' },
+            { type: 'text',  tone: 'execution',          text: '<p class="emphasis">And this \u2014 was only the beginning.</p>' }
         ];
+
+        var currentIndex = -1;
+        var isTransitioning = false;
+        var videoElements = {};
+        var ambientAudio = document.getElementById('globalAmbient');
+        var isWeChat = /MicroMessenger/i.test(navigator.userAgent);
 
         function init() {
-            const viewport = document.getElementById('viewport');
-            states.forEach((state, index) => {
-                const stateEl = document.createElement('div');
+            var viewport = document.getElementById('viewport');
+            for (var i = 0; i < states.length; i++) {
+                var state = states[i];
+                var stateEl = document.createElement('div');
                 stateEl.className = 'state';
-                stateEl.dataset.index = index;
-                let inner = `<div class="bg ${state.tone}"></div>`;
+                stateEl.setAttribute('data-index', i);
+                var inner = '<div class="bg ' + state.tone + '"></div>';
                 if (state.type === 'text') {
-                    inner += `<div class="text-content">${state.text}</div>`;
+                    inner += '<div class="text-content">' + state.text + '</div>';
                 } else if (state.type === 'video') {
-                    inner += `
-                        <div class="video-container">
-                            <div class="video-loader" id="loader_${index}"></div>
-                            <video id="vid_${index}"
-                                playsinline
-                                muted
-                                preload="none"
-                            ></video>
-                        </div>`;
-                } else if (state.type === 'interactive') {
-                    inner += `
-                        <div class="interactive-scene">
-                            <div class="drawer" id="drawer_${index}">
-                                <div class="folder" id="folder_${index}"></div>
-                            </div>
-                            <div class="pages-container" id="pages_${index}"></div>
-                            <div class="drag-hint" id="hint_${index}">Drag up to open</div>
-                        </div>`;
+                    inner += '<div class="video-container">' +
+                        '<div class="video-loader" id="loader_' + i + '"></div>' +
+                        '<video id="vid_' + i + '"' +
+                        ' playsinline webkit-playsinline' +
+                        ' x5-playsinline="true"' +
+                        ' x5-video-orientation="portrait"' +
+                        ' muted preload="auto"></video>' +
+                        '</div>';
                 } else if (state.type === 'image') {
-                    inner += `<div class="image-frame"><img src="${state.imageUrl}" loading="lazy"></div>`;
+                    inner += '<div class="image-frame"><img src="' + state.imageUrl + '" loading="lazy"></div>';
                 }
                 stateEl.innerHTML = inner;
                 viewport.appendChild(stateEl);
-                if (state.type === 'video') {
-                    videoElements[index] = document.getElementById(`vid_${index}`);
-                } else if (state.type === 'interactive') {
-                    setupInteractive(index);
-                }
-            });
-            document.getElementById('startButton').addEventListener('click', startExperience);
-        }
-
-        function setupInteractive(index) {
-            const drawer = document.getElementById(`drawer_${index}`);
-            const folder = document.getElementById(`folder_${index}`);
-            const pagesContainer = document.getElementById(`pages_${index}`);
-            const hint = document.getElementById(`hint_${index}`);
-
-            // Populate pages
-            pages.forEach((url, i) => {
-                const pageEl = document.createElement('div');
-                pageEl.className = 'page';
-                pageEl.style.backgroundImage = `url(${url})`;
-                pagesContainer.appendChild(pageEl);
-            });
-
-            // Drag to open drawer
-            let touchStartY = 0;
-            drawer.addEventListener('touchstart', e => {
-                touchStartY = e.touches[0].clientY;
-            });
-            drawer.addEventListener('touchmove', e => {
-                const diff = touchStartY - e.touches[0].clientY;
-                if (diff > 50 && !drawerOpen) {
-                    drawer.classList.add('open');
-                    sfxDrawer.play();
-                    drawerOpen = true;
-                    hint.textContent = 'Tap folder';
-                }
-            });
-
-            // Click folder to open
-            folder.addEventListener('click', () => {
-                if (drawerOpen && !folderOpened) {
-                    folder.classList.add('opened');
-                    sfxSlap.play();
-                    pagesContainer.style.display = 'flex';
-                    folderOpened = true;
-                    hint.textContent = 'Swipe left to flip pages';
-                    showPage(0);
-                }
-            });
-
-            // Swipe pages
-            let pageStartX = 0;
-            pagesContainer.addEventListener('touchstart', e => {
-                pageStartX = e.touches[0].clientX;
-            });
-            pagesContainer.addEventListener('touchend', e => {
-                const diff = pageStartX - e.changedTouches[0].clientX;
-                if (Math.abs(diff) > 50) {
-                    sfxPage.play();
-                    if (diff > 0 && currentPage < pages.length - 1) {
-                        currentPage++;
-                    } else if (diff < 0 && currentPage > 0) {
-                        currentPage--;
-                    } else if (currentPage === pages.length - 1 && diff > 0) {
-                        // Last page swipe: zoom and next state
-                        pagesContainer.querySelectorAll('.page')[currentPage].style.animation = 'slowZoom 4s ease-out forwards';
-                        setTimeout(() => gotoState(index + 1), 4000);
-                    }
-                    showPage(currentPage);
-                }
-            });
-        }
-
-        function showPage(pageIndex) {
-            const pagesContainer = document.querySelector('.pages-container'); // Assuming only one for simplicity
-            if (pagesContainer) {
-                pagesContainer.style.transform = `translateX(-${pageIndex * 100}%)`;
+                if (state.type === 'video') { videoElements[i] = document.getElementById('vid_' + i); }
             }
+            document.getElementById('startButton').addEventListener('click', startExperience);
+            document.getElementById('startButton').addEventListener('touchend', function(e) { e.preventDefault(); startExperience(); });
         }
 
         function preloadAround(index) {
-            const range = [index - 1, index, index + 1, index + 2];
-            range.forEach(i => {
-                if (i < 0 || i >= states.length) return;
-                if (states[i].type !== 'video') return;
-                const vid = videoElements[i];
-                if (!vid.src && !vid.dataset.loading) {
-                    vid.dataset.loading = 'true';
-                    vid.src = states[i].src;
-                    vid.load();
-                }
-            });
-        }
-        async function startExperience() {
-            try {
-                await ambientAudio.play();
-                ambientAudio.volume = 0.3;
-            } catch(e) {}
-            document.getElementById('startOverlay').classList.add('hidden');
-            preloadAround(0);
-            setTimeout(() => gotoState(0), 600);
-        }
-        async function gotoState(index) {
-            if (index < 0 || index >= states.length || isTransitioning) return;
-            isTransitioning = true;
-            const prevState = states[currentIndex];
-            const nextState = states[index];
-            if (prevState?.type === 'video' && videoElements[currentIndex]) {
-                videoElements[currentIndex].pause();
+            var range = [index - 1, index, index + 1, index + 2];
+            for (var r = 0; r < range.length; r++) {
+                var i = range[r];
+                if (i < 0 || i >= states.length) continue;
+                if (states[i].type !== 'video') continue;
+                var vid = videoElements[i];
+                if (!vid.getAttribute('src')) { vid.setAttribute('src', states[i].src); vid.load(); }
             }
-            document.querySelectorAll('.state').forEach(s => s.classList.remove('active'));
-            const stateEl = document.querySelector(`[data-index="${index}"]`);
-            stateEl.classList.add('active');
-            preloadAround(index);
-            if (nextState.type === 'video') {
-                if (index === 3) {
-                    fadeAmbient(0);
-                } else {
-                    fadeAmbient(0.3);
-                }
-                const vid = videoElements[index];
-                const loader = document.getElementById(`loader_${index}`);
-                vid.onended = null;
-                if (!vid.src) {
-                    vid.src = nextState.src;
-                    vid.load();
-                }
-                if (vid.readyState >= 3) {
-                    vid.currentTime = 0;
-                    await vid.play();
+        }
+
+        function safePlay(vid, callback) {
+            vid.muted = true;
+            var playPromise = vid.play();
+            if (playPromise !== undefined) {
+                playPromise.then(function() {
                     vid.muted = false;
-                    if (loader) loader.classList.add('hidden');
-                } else {
-                    if (loader) loader.classList.remove('hidden');
-                    await new Promise(resolve => {
-                        const onReady = () => {
-                            vid.removeEventListener('canplay', onReady);
-                            resolve();
-                        };
-                        vid.addEventListener('canplay', onReady);
+                    if (callback) callback();
+                }).catch(function() {
+                    var resolved = false;
+                    var timeout = setTimeout(function() { if (!resolved) { resolved = true; if (callback) callback(); } }, 8000);
+                    vid.addEventListener('canplay', function onCanPlay() {
+                        vid.removeEventListener('canplay', onCanPlay);
+                        if (resolved) return;
+                        clearTimeout(timeout); resolved = true;
+                        vid.muted = true;
+                        var retry = vid.play();
+                        if (retry !== undefined) { retry.then(function() { vid.muted = false; }).catch(function() {}); }
+                        if (callback) callback();
                     });
-                    vid.currentTime = 0;
-                    await vid.play();
-                    vid.muted = false;
-                    if (loader) loader.classList.add('hidden');
-                }
-                vid.onended = () => {
-                    if (index < states.length - 1) {
+                });
+            } else { if (callback) callback(); }
+        }
+
+        var started = false;
+        var firstVidPreplayed = false;
+        function startExperience() {
+            if (started) return;
+            started = true;
+            try { ambientAudio.play(); ambientAudio.volume = 0.3; } catch(e) {}
+            var firstVid = videoElements[0];
+            if (firstVid) {
+                firstVid.setAttribute('src', states[0].src);
+                firstVid.load();
+                firstVid.muted = true;
+                var p = firstVid.play();
+                if (p !== undefined) { p.then(function() { firstVidPreplayed = true; }).catch(function(e) {}); }
+            }
+            preloadAround(0);
+            document.getElementById('startOverlay').classList.add('hidden');
+            setTimeout(function() { gotoState(0); }, 300);
+        }
+
+        function setupVideoEnd(vid, stateEl, index) {
+            if (index === 20) {
+                var checkTime = setInterval(function() {
+                    if (vid.duration && vid.currentTime >= vid.duration - 2) {
+                        clearInterval(checkTime);
+                        stateEl.style.transition = 'opacity 2s ease-out';
                         stateEl.classList.add('fade-out');
-                        setTimeout(() => {
+                    }
+                }, 100);
+                vid.onended = function() {
+                    clearInterval(checkTime);
+                    stateEl.style.transition = '';
+                    stateEl.classList.remove('fade-out');
+                    if (index < states.length - 1) gotoState(index + 1);
+                };
+            } else {
+                vid.onended = function() {
+                    if (index < states.length - 1) {
+                        stateEl.style.transition = 'opacity 1.1s ease-out';
+                        stateEl.classList.add('fade-out');
+                        setTimeout(function() {
+                            stateEl.style.transition = '';
                             stateEl.classList.remove('fade-out');
                             gotoState(index + 1);
                         }, 1100);
                     }
                 };
-            } else if (nextState.type === 'interactive') {
-                fadeAmbient(0.3);
-                // Reset interactive vars for replay
-                drawerOpen = false;
-                folderOpened = false;
-                currentPage = 0;
-                const drawer = stateEl.querySelector('.drawer');
-                drawer.classList.remove('open');
-                const folder = stateEl.querySelector('.folder');
-                folder.classList.remove('opened');
-                const pagesContainer = stateEl.querySelector('.pages-container');
-                pagesContainer.style.display = 'none';
-                const hint = stateEl.querySelector('.drag-hint');
-                hint.textContent = 'Drag up to open';
-                showPage(0);
-            } else {
-                fadeAmbient(0.3);
             }
-            currentIndex = index;
-            document.getElementById('stateIndicator').innerText =
-                `${String(index).padStart(2, '0')} / ${states.length - 1}`;
-            setTimeout(() => { isTransitioning = false; }, 800);
         }
+
+        function gotoState(index) {
+            if (index < 0 || index >= states.length || isTransitioning) return;
+            isTransitioning = true;
+            var prevState = currentIndex >= 0 ? states[currentIndex] : null;
+            var nextState = states[index];
+            if (prevState && prevState.type === 'video' && videoElements[currentIndex]) { videoElements[currentIndex].pause(); }
+            var allStates = document.querySelectorAll('.state');
+            for (var s = 0; s < allStates.length; s++) { allStates[s].classList.remove('active'); allStates[s].classList.remove('fade-in-slow'); }
+            var activeEl = document.querySelector('[data-index="' + index + '"]');
+            activeEl.classList.add('active');
+            if (index === 20) { activeEl.classList.add('fade-in-slow'); }
+            preloadAround(index);
+            if (nextState.type === 'video') {
+                if (index === 3) { fadeAmbient(0); } else { fadeAmbient(0.3); }
+                var vid = videoElements[index];
+                var loader = document.getElementById('loader_' + index);
+                var stateEl = activeEl;
+                vid.onended = null;
+                if (!vid.getAttribute('src')) { vid.setAttribute('src', nextState.src); vid.load(); }
+                if (loader) loader.classList.remove('hidden');
+                if (index === 0 && firstVidPreplayed) {
+                    firstVidPreplayed = false;
+                    vid.muted = false;
+                    if (loader) loader.classList.add('hidden');
+                    setupVideoEnd(vid, stateEl, index);
+                } else {
+                    vid.currentTime = 0;
+                    safePlay(vid, function() {
+                        if (loader) loader.classList.add('hidden');
+                        setupVideoEnd(vid, stateEl, index);
+                    });
+                }
+            } else { fadeAmbient(0.3); }
+            currentIndex = index;
+            document.getElementById('stateIndicator').innerText = (index < 10 ? '0' : '') + index + ' / ' + (states.length - 1);
+            setTimeout(function() { isTransitioning = false; }, 800);
+        }
+
         function fadeAmbient(target) {
             clearInterval(window.fadeInterval);
-            window.fadeInterval = setInterval(() => {
-                const current = ambientAudio.volume;
-                if (Math.abs(current - target) < 0.02) {
-                    ambientAudio.volume = target;
-                    clearInterval(window.fadeInterval);
-                } else {
-                    ambientAudio.volume += (target > current ? 0.02 : -0.02);
-                }
+            window.fadeInterval = setInterval(function() {
+                var current = ambientAudio.volume;
+                if (Math.abs(current - target) < 0.02) { ambientAudio.volume = target; clearInterval(window.fadeInterval); }
+                else { ambientAudio.volume += (target > current ? 0.02 : -0.02); }
             }, 50);
         }
-        let scrollCooldown = false;
-        window.addEventListener('wheel', e => {
-            if (scrollCooldown || (currentIndex === 6 && ! (currentPage === pages.length - 1))) return; // Block scroll in interactive until last page
-            scrollCooldown = true;
+
+        var scrollCooldown = false;
+        window.addEventListener('wheel', function(e) {
+            if (scrollCooldown) return; scrollCooldown = true;
             if (e.deltaY > 0) gotoState(currentIndex + 1);
             else if (e.deltaY < 0) gotoState(currentIndex - 1);
-            setTimeout(() => { scrollCooldown = false; }, 1200);
+            setTimeout(function() { scrollCooldown = false; }, 1200);
         }, { passive: true });
-        let touchStartY = 0;
-        window.addEventListener('touchstart', e => {
-            touchStartY = e.touches[0].clientY;
+
+        var touchStartY = 0;
+        window.addEventListener('touchstart', function(e) { touchStartY = e.touches[0].clientY; }, { passive: true });
+        window.addEventListener('touchend', function(e) {
+            var diff = touchStartY - e.changedTouches[0].clientY;
+            if (Math.abs(diff) > 50) { if (diff > 0) gotoState(currentIndex + 1); else gotoState(currentIndex - 1); }
         }, { passive: true });
-        window.addEventListener('touchend', e => {
-            const diff = touchStartY - e.changedTouches[0].clientY;
-            if (Math.abs(diff) > 50 && (currentIndex !== 6 || (currentPage === pages.length - 1))) {
-                if (diff > 0) gotoState(currentIndex + 1);
-                else gotoState(currentIndex - 1);
-            }
-        }, { passive: true });
-        window.addEventListener('keydown', e => {
+
+        window.addEventListener('keydown', function(e) {
             if (e.key === 'ArrowDown' || e.key === ' ') gotoState(currentIndex + 1);
             if (e.key === 'ArrowUp') gotoState(currentIndex - 1);
         });
+
+        if (isWeChat) {
+            document.addEventListener('WeixinJSBridgeReady', function() {
+                WeixinJSBridge.invoke('getNetworkType', {}, function() {
+                    ambientAudio.load();
+                    if (videoElements[0]) { videoElements[0].setAttribute('src', states[0].src); videoElements[0].load(); }
+                });
+            }, false);
+        }
+
         init();
+    </script>
     </script>
 </body>
 </html>
